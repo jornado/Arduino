@@ -18,6 +18,7 @@ class DachisRfidReader
 	void deactivate();
 	SoftwareSerial serial;
 	char code[10];
+	char existing[10];
   private:
     int _rx;
     int _tx;

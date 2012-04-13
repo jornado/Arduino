@@ -41,19 +41,17 @@ int DachisRfidReader::readTag()
 		if((val = serial.read()) == 10) {   // check for header 
 			bytesread = 0; 
 			while (bytesread < 10) {  // read 10 digit code 
-				//Serial.println("Reading tag...");
 				val = serial.read(); 
 				if((val == 10)||(val == 13)) {  // if header or stop bytes before the 10 digit reading 
 					break;                       // stop reading 
 				} 
 				if(val==-1) { // Garbled char
-					//Serial.println("Garbled char");
 					break;
 				}
 				code[bytesread] = val;         // add the digit    
 				bytesread++;                   // ready to read next digit  
 			} 
-
+			
 			bytesread = 0; 
 			deactivate();    // deactivate the RFID reader
 			return 1;

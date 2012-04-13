@@ -13,8 +13,10 @@ class DachisXbee
   public:
     DachisXbee(int rx, int tx);
 	void setup();
-    int transmit(char* message);
+    int transmitMessage(char* message);
+	int receiveMessage();
 	SoftwareSerial serial;
+	char message[10];
   private:
     int _rx;
     int _tx;
